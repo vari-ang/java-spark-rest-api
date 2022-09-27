@@ -1,4 +1,5 @@
 # REST API built on Java Spark
+A simple REST API web service built on Java Spark
 
 ## Prerequisite
 1. Java 18
