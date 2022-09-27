@@ -10,4 +10,9 @@ public class ResponseBody {
     public ResponseBody(StatusResponse status) {
         this.status = status;
     }
+
+    public ResponseBody(StatusResponse status, JsonElement data) {
+        this.status = status;
+        this.data = data;
+    }
 }

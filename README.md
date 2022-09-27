@@ -50,10 +50,13 @@ The service will return a `Hello, name` text. Change `name` with your own name
 
 ### User Service
 To test adding new user by `POST` request in CLI do:
-
 ```
 curl -d '{"id":"1", "firstName":"Budi", "lastName": "Andi", "email": "budi.andi@user.com"}' -H "Content-Type: application/json" -X POST http://localhost:4567/users
 ```
 
 `{"status":"SUCCESS"}` will be returned by the service
 
+To test getting all users by `GET` requets in CLI do:
+`curl http://localhost:4567/users`
+
+`{"status":"SUCCESS","data":[{...}, ...]}` will be returned by the service, all the users data are in the `data` field
