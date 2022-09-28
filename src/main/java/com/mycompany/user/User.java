@@ -12,4 +12,22 @@ public class User {
         this.lastName = lastName;
         this.email = email;
     }
+
+    public String getId() {
+        return this.id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof User) {
+            User otherUser = (User) obj;
+
+            return this.id == otherUser.id && 
+                this.firstName == otherUser.firstName && 
+                this.lastName == otherUser.lastName && 
+                this.email == otherUser.email;
+        }
+
+        return false;
+    }
 }

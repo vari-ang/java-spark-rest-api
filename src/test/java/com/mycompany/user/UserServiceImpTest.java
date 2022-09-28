@@ -35,4 +35,18 @@ public class UserServiceImpTest {
 
         assertEquals(3, users.size());
     }
+
+    @Test
+    public void givenListOfUsersWhenSpecificUserInTheListIsSearchedThenItShouldReturnTheUser() {
+        UserServiceImp userService = new UserServiceImp();
+        User user1 = new User("1", "vari", "angga", "vari.angga@example.com");
+        User user2 = new User("2", "budi", "", "budi@example.com");
+        User user3 = new User("3", "joni", "andi", "joniandi@example.com");  
+
+        userService.addUser(user1);
+        userService.addUser(user2);
+        userService.addUser(user3);
+
+        assertEquals(user2, userService.getUser("2"));
+    }
 }
