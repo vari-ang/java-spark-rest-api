@@ -26,4 +26,18 @@ public class UserServiceImp implements UserService {
     public void addUser(User user) {
         this.users.add(user);
     }
+
+    public User editUser(User userToEdit) throws UserException {
+        for(User user : this.users) {
+            if(user.getId().equals(userToEdit.getId())) {
+                user.setFirstName(userToEdit.getFirstName());
+                user.setLastName(userToEdit.getLastName());
+                user.setEmail(userToEdit.getEmail());
+
+                return user;
+            }
+        }
+
+        throw new UserException("User not found");
+    }
 }

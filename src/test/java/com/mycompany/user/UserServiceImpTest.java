@@ -2,6 +2,7 @@ package com.mycompany.user;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
@@ -48,5 +49,24 @@ public class UserServiceImpTest {
         userService.addUser(user3);
 
         assertEquals(user2, userService.getUser("2"));
+    }
+
+    @Test
+    public void givenListOfUsersWhenSpecificUserToEditThenItShouldEditAndReturnTheUser() {
+        UserServiceImp userService = new UserServiceImp();
+        User user1 = new User("1", "vari", "angga", "vari.angga@example.com");
+        User user2 = new User("2", "budi", "", "budi@example.com");
+
+        userService.addUser(user1);
+        userService.addUser(user2);
+
+        User userToEdit = new User("2", "joni", "agung", "joni.agung@example.com");
+        try {
+            userService.editUser(userToEdit);
+            assertEquals(userService.getUser("2"), userToEdit);
+        } catch (UserException e) {
+            e.printStackTrace();
+            fail();
+        }
     }
 }

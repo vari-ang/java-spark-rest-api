@@ -8,4 +8,6 @@ public interface UserService {
     public User getUser(String id);
 
     public void addUser(User user);
+
+    public User editUser(User user) throws UserException;
 }
