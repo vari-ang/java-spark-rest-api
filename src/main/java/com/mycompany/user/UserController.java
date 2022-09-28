@@ -24,6 +24,17 @@ public class UserController {
                 );
         });
 
+        get("/users/:id", (request, response) -> {
+            response.type("application/json");
+
+            return new Gson().toJson(
+                new ResponseBody(
+                    StatusResponse.SUCCESS,
+                    new Gson()
+                        .toJsonTree(userService.getUser(request.params(":id"))))
+                );
+        });
+
         post("/users", (request, response) -> {
             response.type("application/json");
 
