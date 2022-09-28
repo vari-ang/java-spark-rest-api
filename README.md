@@ -32,15 +32,25 @@ The service will be available at `http://localhost:4567`
 ## How to test
 Run all unit tests by: `mvn test`
 
-### Hello World Service
-To test adding new user by `POST` request in CLI do:
-```
-curl -d '{"id":"1", "firstName":"Budi", "lastName": "Andi", "email": "budi.andi@user.com"}' -H "Content-Type: application/json" -X POST http://localhost:4567/users
-```
+Test in Postman:
 
-`{"status":"SUCCESS"}` will be returned by the service
+### Add new user
+`POST /users`
 
-To test getting all users by `GET` requets in CLI do:
-`curl http://localhost:4567/users`
+http://localhost:4567/users
 
-`{"status":"SUCCESS","data":[{...}, ...]}` will be returned by the service, all the users data are in the `data` field
+![Add new user](/img/add.png)
+
+### Get all users
+`GET /users`
+
+http://localhost:4567/users
+
+![Get all users](/img/getAll.png)
+
+### Get a user
+`GET /user/{id}`
+
+http://localhost:4567/user/{id}
+
+![Get a user](/img/getId.png)
