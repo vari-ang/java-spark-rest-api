@@ -2,7 +2,6 @@ package com.mycompany.user;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
@@ -52,7 +51,7 @@ public class UserServiceImpTest {
     }
 
     @Test
-    public void givenListOfUsersWhenSpecificUserToEditThenItShouldEditAndReturnTheUser() {
+    public void givenListOfUsersWhenSpecificUserToEditThenItShouldEditAndReturnTheUser() throws Exception {
         UserServiceImp userService = new UserServiceImp();
         User user1 = new User("1", "vari", "angga", "vari.angga@example.com");
         User user2 = new User("2", "budi", "", "budi@example.com");
@@ -61,12 +60,18 @@ public class UserServiceImpTest {
         userService.addUser(user2);
 
         User userToEdit = new User("2", "joni", "agung", "joni.agung@example.com");
-        try {
-            userService.editUser(userToEdit);
-            assertEquals(userService.getUser("2"), userToEdit);
-        } catch (UserException e) {
-            e.printStackTrace();
-            fail();
-        }
+        userService.editUser(userToEdit);
+        assertEquals(userService.getUser("2"), userToEdit);
+    }
+
+    @Test(expected = UserException.class)
+    public void givenListOfUsersWhenSpecificUserToEditNotInListThenItShouldReturnUserException() throws UserException {
+        UserServiceImp userService = new UserServiceImp();
+        User user1 = new User("1", "vari", "angga", "vari.angga@example.com");
+
+        userService.addUser(user1);
+
+        User userToEdit = new User("3", "joni", "agung", "joni.agung@example.com");
+        userService.editUser(userToEdit);
     }
 }
